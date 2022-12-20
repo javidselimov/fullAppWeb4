@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const cors = require('cors')
 const app = express();
 const conn = mysql.createConnection({
   host: "localhost",
@@ -10,7 +11,8 @@ const conn = mysql.createConnection({
 });
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}))
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
 
 
 require("dotenv").config();
@@ -28,9 +30,22 @@ app.get("/", (req, res) => {
 app.get('/playlist', (req, res) => {
     const command = `select * from musiclist`;
     conn.query(command, (err,data) => {
-        if (!err) res.status(200).json(data)
+        if (!err) {
+            return res.status(200).json(data);
+        }
         res.status(404).send("Error not found")
     })
+})
+
+app.post('/playlist', (req, res) => {
+    const {link,name,duration,genre,singer} = req.body
+    const command = `insert into musiclist(name,singer,duration,genre,link) values("${name}","${singer}","${duration}","${genre}","${link}")`;
+    conn.query(command, (err) => {
+        if (!err) {
+           return res.json({'created':true})
+        }
+        return res.send(err)
+   })
 })
 
 

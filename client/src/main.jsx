@@ -9,6 +9,7 @@ import { createGlobalStyle } from "styled-components";
 import Createlist from "./pages/Createlist";
 
 import store from "./state/store.js";
+import { Provider } from "react-redux";
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -19,7 +20,8 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <Provider store = {store}>
+    <BrowserRouter>
     
       <GlobalStyle />
       <Routes>
@@ -29,4 +31,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Routes>
 
   </BrowserRouter>
+  </Provider>,
+  
 );

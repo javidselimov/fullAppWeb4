@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
 import CreateMusic from '../components/CreateMusic';
 import Title from '../components/Title';
+import { getList } from '../state/actions';
 
 const HomeContainer = styled.div`
   background-color: #1aab9c;
@@ -15,13 +17,27 @@ const HomeContainer = styled.div`
 
 
 const Home = () => {
+    const {loading,list,error }=useSelector(state=>state.list)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getList())
+    },[])
+
+    console.log(loading, list, error)
+    
     return (
       <HomeContainer>
-            <Title title="This is amazing playlist" />
-            <CreateMusic title = "Create Music"/>
+        {loading ? (
+          <>Loading..</>
+        ) : list?.length > 0 ? (
+          <Title title="This is amazing playlist" />
+        ) : list?.length === 0 ? (
+          <CreateMusic title="Create Music" />
+        ) : (
+          <>{error}</>
+        )}
       </HomeContainer>
-    
-  )
+    );
 }
 
 export default Home

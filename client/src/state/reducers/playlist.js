@@ -2,7 +2,7 @@ import { ActionTypes } from "../actiontypes"
 
 const initialState = {
     loading: false,
-    list: [],
+    list: null,
     error:null
 }
 

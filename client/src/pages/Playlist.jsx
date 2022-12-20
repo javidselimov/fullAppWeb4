@@ -1,8 +1,11 @@
 import React from 'react'
+import PlayListComp from '../components/PlayListComp'
 
 const Playlist = () => {
   return (
-    <div>Playlist</div>
+      <PlayListComp>
+          
+    </PlayListComp>
   )
 }
 
