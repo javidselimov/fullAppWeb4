@@ -9,6 +9,7 @@ const TitleComp = styled.div`
   border-radius: 10px;
   font-size: 2rem;
   color: white;
+  text-align: center;
 
   &:hover {
     background-color: #1c786e;

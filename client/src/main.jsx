@@ -8,6 +8,7 @@ import Playlist from "./pages/Playlist";
 import { createGlobalStyle } from "styled-components";
 import Createlist from "./pages/Createlist";
 
+import store from "./state/store.js";
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
@@ -16,14 +17,16 @@ const GlobalStyle = createGlobalStyle`
     font-family: Open-Sans, Helvetica, Sans-Serif;
   }
 `;
- 
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <GlobalStyle />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/playlist" element={<Playlist />} />
-      <Route path="/createlist" element={<Createlist />} />
-    </Routes>
+    
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/createlist" element={<Createlist />} />
+      </Routes>
+
   </BrowserRouter>
 );
