@@ -1,4 +1,5 @@
 
+import axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
@@ -24,6 +25,16 @@ const Form = () => {
     e.preventDefault();
 
     console.log(state);
+
+    axios
+      .post("http://localhost:4000/playlist", state)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
   };
 
   const handleChange = (e) => {

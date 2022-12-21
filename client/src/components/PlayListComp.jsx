@@ -19,7 +19,7 @@ const PlayListComp = () => {
       {list.length > 0
         ? list.map((item) => {
             return (
-              <ListItem
+              <ListItem key = {item.id}
                 id={item.id}
                 name={item.name}
                 singer={item.singer}

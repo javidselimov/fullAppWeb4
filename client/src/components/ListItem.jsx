@@ -1,5 +1,8 @@
+import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { getList } from "../state/actions";
 
 const Item = styled.div`
   width: 25%;
@@ -11,7 +14,21 @@ const Item = styled.div`
 
 
 
-const ListItem = ({link,name,singer,duration,genre}) => {
+const ListItem = ({ id, link, name, singer, duration, genre }) => {
+
+   const dispatch =  useDispatch();
+   
+  const handleClick = (id) => {
+  
+    console.log(id)
+    axios
+      .delete(`http://localhost:4000/delete/${id}`)
+      .then((data) => {
+        console.log(data)
+       dispatch(getList());
+      });
+    
+  }
     return (
       <Item>
         <iframe
@@ -33,7 +50,7 @@ const ListItem = ({link,name,singer,duration,genre}) => {
                 {genre}
             </p>  
             <p>{singer}</p>
-            <button>Del</button>
+            <button onClick={()=>handleClick(id)}>Del</button>
       </Item>
     );
 };

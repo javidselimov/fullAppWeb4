@@ -26,12 +26,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <GlobalStyle />
       <Routes>
         
-        <Route path="/" element={<Createlist />} />
+        {/* <Route path="/" element={<Createlist />} /> */}
 
         
-         {/* <Route path="/" element={<Home />} />
+         <Route path="/" element={<Home />} />
         <Route path="/playlist" element={<Playlist />} />
-        <Route path="/createlist" element={<Createlist />} />  */}
+        <Route path="/createlist" element={<Createlist />} /> 
       </Routes>
     </BrowserRouter>
   </Provider>
