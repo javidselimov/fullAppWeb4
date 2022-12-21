@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-
+import './index.css'
 import { BrowserRouter, Routes, Route, Link, Outlet } from "react-router-dom";
 import Home from "./pages/Home";
 import Playlist from "./pages/Playlist";
@@ -12,6 +12,7 @@ import store from "./state/store.js";
 import { Provider } from "react-redux";
 const GlobalStyle = createGlobalStyle`
   body {
+    background-color: #3da2ad;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -20,17 +21,18 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store = {store}>
+  <Provider store={store}>
     <BrowserRouter>
-    
       <GlobalStyle />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="/createlist" element={<Createlist />} />
-      </Routes>
+        
+        <Route path="/" element={<Createlist />} />
 
-  </BrowserRouter>
-  </Provider>,
-  
+        
+         {/* <Route path="/" element={<Home />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/createlist" element={<Createlist />} />  */}
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
